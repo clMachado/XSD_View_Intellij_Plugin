@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idea-plugin>
+    <id>br.com.ClmDev.xsd_wiew</id>
+    <name>XSD_Wiew</name>
+    <version>1.2.0</version>
+    <vendor email="m2.cleverson@gmail.com" url="https://github.com/exemplo">XSD View</vendor>
+
+    <description><![CDATA[
+        Plugin para visualizar arquivos XML Schema Definition (XSD) em formato gráfico.
+
+        Funcionalidades:
+        - Visualização hierárquica de elementos XSD
+        - Representação gráfica de tipos complexos
+        - Navegação interativa pela estrutura do schema
+        - Suporte para elementos, atributos e tipos de dados
+
+        Para usar: clique com botão direito em um arquivo .xsd e selecione "Visualizar XSD".
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <h3>Versão 1.0.0</h3>
+        <ul>
+            <li>Implementação inicial do visualizador XSD</li>
+            <li>Suporte para elementos e tipos complexos</li>
+            <li>Interface gráfica básica</li>
+        </ul>
+        <h3>Versão 1.1.0 e 1.2.0</h3>
+        <ul>
+            <li>Melhorias de carga de arquivo</li>
+            <li>Suporte a expandir e colapsar nós</li>
+            <li>correção de recusividade na exibição de nós</li>
+        </ul>
+    ]]></change-notes>
+
+    <!-- Compatibilidade com versões do IntelliJ -->
+    <idea-version since-build="231" until-build="252.*"/>
+
+    <!-- Dependências do plugin -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.xml</depends>
+    <depends>com.intellij.modules.java</depends>
+    <!-- depends>com.intellij.xml</depends-->
+
+    <!-- Ações do plugin -->
+    <actions>
+        <action id="XsdVisualizerAction"
+                class="br.com.clmDev.xsd_view.XsdVisualizerAction"
+                text="XSD View"
+                description="Abre uma representação visual do arquivo XSD"
+                icon="/icons/xsd-icon.png">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+
+    <!-- Extensões -->
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="XSD View"
+                    factoryClass="br.com.clmDev.xsd_view.XsdVisualizerToolWindowFactory"
+                    anchor="right"
+                    icon="/icons/xsd-icon.png"/>
+    </extensions>
+</idea-plugin>
